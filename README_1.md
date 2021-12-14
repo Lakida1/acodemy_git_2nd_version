@@ -12,6 +12,8 @@
 - Acodemy: IT (QA) courses in Riga + English - in process now
 - SQL,HTML,Agile (some programms will be added later) + English: udemy.com etc - in process
 - RigaTechGirl + English 
-- the list will be filled later :)
+- the list will be filled later:)
 ##Motivation:
->I want to get new professional skills to increase my possibilities to find new job (will be edit:)
+>I want to get new professional skills to increase my possibilities to find new interesting job (will be edit:)
+
+> 
