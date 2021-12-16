@@ -14,6 +14,6 @@
 - RigaTechGirl + English 
 - the list will be filled later:)
 ##Motivation:
->I want to get new professional skills to increase my possibilities to find new interesting job (will be edit:)
+>I want to get new professional skills to increase my possibilities to find new interesting job (will be edited:)
 
 > 
