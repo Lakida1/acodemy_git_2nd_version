@@ -1,6 +1,6 @@
 #Natalja Lakida
 ##*Acodemy QA2 student*
->I am a typical switcher :)  
+ 
 
 ##Education:
 - RTU,TTI,Master of science in transport and traffic engineering, Master Thesis: Technology's Analysis and Improvement Directions of Microsoft Business Solution
