@@ -6,39 +6,27 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import page_object.HeaderPage;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.containsString;
 
 public class CouponTest {
     WebDriver driver;
+    HeaderPage header;
 
     @BeforeEach
     public void init() {
-        driver = new ChromeDriver();
-        //ChromeOptions chromeOptions = new ChromeOptions();
-        //ChromeOptions.addArguments("--disable-logging");
-        //driver = new ChromeDriver();
+        driver = new ChromeDriver();// zdes proishodit inicializacija driver:
+        HeaderPage header = new HeaderPage(driver); // sozdali object header na osnove class HeaderPage, v k-j podajom driver, k-j proincializirovan v class HeaderPage
+        this.header = new HeaderPage(driver);
+
     }
 
     @Test
     public void applyCouponCode() {
         driver.get("http://shop.acodemy.lv/");
-        driver.findElement(By.id("woocommerce-product-search-field-0")).sendKeys("Album");
-        driver.findElement(By.id("woocommerce-product-search-field-0")).submit();
-        // nize ta ze samaja zapis, no prisvoen ELEMENT searhField =
-        //WebElement searchField = driver.findElement(By.id("woocommerce-product-search-field-0"));
-//        searchField.sendKeys("Album");
-
-       // zahodit na stranicu, nahodit Album, dobavlaet 1 pcs, zahodit v pole View cart:
-      WebElement searchField = driver.findElement(By.id("woocommerce-product-search-field-0"));
-       searchField.sendKeys("Album");
-       searchField.submit();
-       WebElement addToCartButton = driver.findElement(By.id("add-to-cart"));
-       addToCartButton.click();
-        WebElement viewCart = driver.findElement(By.linkText("View cart"));
-        System.out.println();
-
+        header.searForAllProduct("Beanie");
 
     }
 // zakrivaet stranicu posle operacij po testu:
