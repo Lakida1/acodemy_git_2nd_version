@@ -1,25 +1,24 @@
 package page_object;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 import java.util.List;
 
+//import org.openqa.selenium.support.ui.Select;
+//import utils.LocalDriverManager;
+
+
 public class HomePage {
-    WebDriver driver;
+    WebDriver driver; // private final WebDriver driver = LocalDriverManager.getInstance();
 
     public HomePage(WebDriver driver) {
         this.driver = driver;
     }
 
-    // nahodit vse classi s nazvaniem products
-    //By productElements = By.xpath("//ul[contains(@class,\'products\')]");
-    //metod, k-j budet vozvrascat vse producti:
     private final By productElements = By.xpath("//ul[contains(@class,'products')]//li");
-    private final By colorSelection = By.id("pa_color");
-
     public List<WebElement> getAllProducts() {
         return driver.findElements(productElements);
     }
@@ -28,12 +27,20 @@ public class HomePage {
         for (WebElement product : getAllProducts()) {
             if (product.getText().contains(productName)) {
                 product.click();
-                break;}
-    }}
-public void selectColor(String color){
-        Select sColor = new Select(driver.findElement(colorSelection));
-        sColor.selectByVisibleText(color);
-}
+                break;
+            }
+        }
+    }
+
+   public void addToCart(String productName)
+   {for (WebElement product : getAllProducts()) {
+       if (product.getText().contains(productName)) {
+           product.findElement(By.xpath(".//a[text()='Add to cart']")).click();
+           break;
+       }
+   }
+
+   }
 }
 
 
