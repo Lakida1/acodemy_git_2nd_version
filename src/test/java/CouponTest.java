@@ -1,59 +1,84 @@
-import constants.Products;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+//import page_object.ProductPage;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
 import page_object.HeaderPage;
 import page_object.HomePage;
+import page_object.ProductPage;
 
-import static constants.Products.HOODIE;
+import java.security.Key;
+import java.util.List;
+
+import static constants.Colors.BLUE;
+import static constants.Product.CAP;
+import static constants.Product.HOODIE;
 import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.containsString;
+//import page_object.HeaderPage;
+//import page_object.HomePage;
+//import utils.LocalDriverManager;
+
+//import static page_object.ProductPage.HOODIE;
+//import static constants.
+
 @Slf4j
-public class CouponTest {
+public class CouponTest{
     WebDriver driver;
     HeaderPage header;
     HomePage homePage;
+    ProductPage productPage;
+
 
     @BeforeEach
-    public void init() {
-        driver = new ChromeDriver();// zdes proishodit inicializacija driver:
-        HeaderPage header = new HeaderPage(driver); // sozdali object header na osnove class HeaderPage, v k-j podajom driver, k-j proincializirovan v class HeaderPage
+    public void init(){
+
+        driver = new ChromeDriver();// private final WebDriver driver = LocalDriverManager.getInstance();
         this.header = new HeaderPage(driver);
         this.homePage = new HomePage(driver);
+        this.productPage = new ProductPage(driver);
     }
-
     @Test
-    public void applyCouponCode() {
-        log.info("Step 1: user open Web page");
+            public void applyCoupon() {
+
+        log.info("Step 1:");
         driver.get("http://shop.acodemy.lv/");
+        log.info("Step 2" );
+        homePage.clickOnProduct(HOODIE);
+        log.info("Step 3:");
+        productPage.selectColor(BLUE);
+        log.info("Step 4  ");
+        homePage.addToCart(HOODIE);
 
-        log.info("Step 2: User select product by product name" + HOODIE);
-        homePage.clickOnProduct("Hoodie");
-
-        log.info("Step 3: user select color of product");
-        homePage.selectColor("Green");
-
-        log.info("Step 4: user select a logo");
-
-        log.info("Step 5: user cancel first color");
-
-        log.info("Step 6: user select new color of product"); // net info na kakih cvetah vozmozno vibrat logo - esli netu logo, to 2-e pole dolzno stat neaktivnim
-
-        log.info("Step 7: user select quantity of product");
-
-        System.out.println("123");
-    }
+        }
+//   @AfterEach
+// public void closeDriver()
+//   {driver.quit();}
 
 
-// zakrivaet stranicu posle operacij po testu:
-//    @AfterEach
-//    public void pageClose() {
-//    driver.quit();
-//    }
-}
+        }
+    //naiti element, nazat na nego. NE DLA PageObject proektorovanija
+//        WebElement searchField = driver.findElement(By.id("woocommerce-product-search-field-0"));
+//        searchField.sendKeys("album");
+//        searchField.submit();
+//        WebElement addCartButton = driver.findElement(By.name("add-to-cart"));
+//        addCartButton.click();
+//        WebElement viewCartButton = driver.findElement(By.linkText("View cart"));
+//        viewCartButton.click();}
+
+
+ //protis po vsem objectam, 2 metoda:
+
+//        for (int i = 0; i < homePage.getAllProducts().size(); i++) {
+//        if (homePage.getAllProducts().get(i).getText().contains("cap")){
+//        homePage.getAllProducts().get(i).click();
+//        }
+//
+//        for(WebElement product: homePage.getAllProducts())
+//        {if(product.getText().contains("Cap"))
+//        {
+//        product.click();
+//        }}
